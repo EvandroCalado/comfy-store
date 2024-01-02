@@ -1,6 +1,6 @@
 export * from './About';
 export * from './Cart';
-export * from './Chackout';
+export * from './Checkout';
 export * from './Error';
 export * from './Home';
 export * from './Landing';
