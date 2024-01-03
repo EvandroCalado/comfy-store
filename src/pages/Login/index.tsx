@@ -5,7 +5,7 @@ export const Login = () => {
   return (
     <section className="grid h-screen place-items-center">
       <Form
-        method="post"
+        method="POST"
         className="card flex w-96 flex-col gap-y-4 bg-base-100 p-8 shadow-lg"
       >
         <h4 className="text-center text-3xl font-bold">Login</h4>
