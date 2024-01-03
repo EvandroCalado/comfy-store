@@ -16,9 +16,6 @@ export const Header = () => {
           </Link>
         </div>
       </div>
-      {/* <nav>
-        <span className="text-4xl text-primary">Comfy</span>
-      </nav> */}
     </header>
   );
 };
