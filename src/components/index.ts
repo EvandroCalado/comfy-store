@@ -1,6 +1,7 @@
 export * from './Button';
 export * from './ErrorElement';
 export * from './FeaturedProducts';
+export * from './GenerateOptions';
 export * from './Header';
 export * from './Hero';
 export * from './Input';

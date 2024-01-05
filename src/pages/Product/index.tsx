@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { GenerateOptions } from '../../components';
 import { TypeProduct } from '../../types/type-product';
-import { GenerateAmountOptions } from '../../utils';
 
 export const Product = () => {
   const product = useLoaderData() as TypeProduct;
@@ -71,7 +71,7 @@ export const Product = () => {
               value={amount}
               onChange={handleAmount}
             >
-              {GenerateAmountOptions(20)}
+              {GenerateOptions(20)}
             </select>
           </div>
           {/* CART BUTTON */}
