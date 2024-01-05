@@ -6,36 +6,41 @@ export const ProductsGrid = () => {
 
   return (
     <div className="grid gap-4 pt-12 md:grid-cols-2 lg:grid-cols-3">
-      {products.data.map((product) => (
-        <Link
-          key={product.id}
-          to={`/products/${product.id}`}
-          className="card w-full shadow-lg transition duration-300 hover:shadow-xl"
-        >
-          <figure>
-            <img
-              src={product.attributes.image.data.attributes.url}
-              alt={product.attributes.title}
-              className="h-64 w-full object-cover md:h-48"
-            />
-          </figure>
+      {products.data.map((product) => {
+        const { image, title, price, category, featured } = product.attributes;
 
-          <div className="card-body">
-            <h2 className="card-title capitalize tracking-wider">
-              {product.attributes.title}
-            </h2>
+        return (
+          <Link
+            key={product.id}
+            to={`/products/${product.id}`}
+            className="card w-full shadow-lg transition duration-300 hover:shadow-xl"
+          >
+            <figure>
+              <img
+                src={image.data.attributes.url}
+                alt={title}
+                className="h-64 w-full object-cover md:h-48"
+              />
+            </figure>
 
-            <div className="card-actions items-center justify-between">
-              <span className="text-secondary">
-                R${product.attributes.price}
-              </span>
-              <div className="badge badge-outline">
-                {product.attributes.category}
+            <div className="card-body">
+              <div className="flex items-center gap-2">
+                <h2 className="card-title capitalize tracking-wider">
+                  {title}
+                </h2>
+                {featured && (
+                  <span className="badge badge-primary uppercase">new</span>
+                )}
+              </div>
+
+              <div className="card-actions mt-4 items-center justify-between">
+                <span className="text-secondary">R${price}</span>
+                <div className="badge badge-outline">{category}</div>
               </div>
             </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        );
+      })}
     </div>
   );
 };
