@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ErrorElement } from './components';
 import {
   About,
   Cart,
@@ -13,11 +14,8 @@ import {
   Register,
 } from './pages';
 
-import { ErrorElement } from './components';
-
 // loaders
-import { landingLoader } from './api/landingLoader';
-import { productLoader } from './api/productLoader';
+import { featuredLoader, landingLoader, productsLoader } from './api';
 
 // actions
 
@@ -36,12 +34,14 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Products />,
+        errorElement: <ErrorElement />,
+        loader: productsLoader,
       },
       {
         path: 'products/:id',
         element: <Product />,
         errorElement: <ErrorElement />,
-        loader: productLoader,
+        loader: featuredLoader,
       },
       {
         path: 'cart',
