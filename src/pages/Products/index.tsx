@@ -1,7 +1,15 @@
+import {
+  Filters,
+  PaginationContainer,
+  ProductsContainer,
+} from '../../components';
+
 export const Products = () => {
   return (
-    <div>
-      <h1>Products</h1>
-    </div>
+    <>
+      <Filters />
+      <ProductsContainer />
+      <PaginationContainer />
+    </>
   );
 };
