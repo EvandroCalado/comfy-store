@@ -4,7 +4,7 @@ import { GenerateOptions } from '../../components';
 import { TypeProduct } from '../../types/type-product';
 
 export const Product = () => {
-  const product = useLoaderData() as TypeProduct;
+  const { product } = useLoaderData() as { product: TypeProduct };
   const { image, title, company, price, description, colors } =
     product.data.attributes;
 
