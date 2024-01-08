@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useLoaderData } from 'react-router-dom';
 import { GenerateOptions } from '../../components';
+import { addItem } from '../../features/cart/cartSlice';
 import { TypeProduct } from '../../types/type-product';
 
 export const Product = () => {
@@ -15,6 +17,25 @@ export const Product = () => {
     setAmount(Number(e.target.value));
   };
 
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(
+      addItem({
+        product: {
+          cartID: product.data.id + productColor,
+          productID: product.data.id,
+          image: image.data.attributes.formats.small.url,
+          title,
+          price,
+          company,
+          productColor,
+          amount,
+        },
+      }),
+    );
+  };
+
   return (
     <section>
       <div className="breadcrumbs">
@@ -27,15 +48,15 @@ export const Product = () => {
           </li>
         </ul>
       </div>
-      {/* PRODUCT */}
+      {/* product */}
       <div className="mt-6 grid gap-y-8 lg:grid-cols-2 lg:gap-x-16">
-        {/* IMAGE */}
+        {/* image */}
         <img
           src={image.data.attributes.url}
           alt={title}
           className="h-96 w-full rounded-lg object-cover"
         />
-        {/* DETAILS */}
+        {/* details */}
         <div>
           <h1 className="text-3xl font-bold capitalize">{title}</h1>
           <h4 className="mt-2 text-xl font-bold text-neutral-content">
@@ -43,7 +64,7 @@ export const Product = () => {
           </h4>
           <p className="mt-3 text-xl">R${price}</p>
           <p className="mt-6 leading-8">{description}</p>
-          {/* COLORS */}
+          {/* colors */}
           <div className="mt-6">
             <h4 className="font-medium capitalize tracking-wider">colors</h4>
             <div className="mt-2">
@@ -60,7 +81,7 @@ export const Product = () => {
               ))}
             </div>
           </div>
-          {/* AMOUNT */}
+          {/* amount */}
           <div className="form-control w-full max-w-xs">
             <label className="label" htmlFor="amount">
               <h4 className="font-medium capitalize tracking-wider">Amount</h4>
@@ -74,12 +95,9 @@ export const Product = () => {
               {GenerateOptions(20)}
             </select>
           </div>
-          {/* CART BUTTON */}
+          {/* cart button */}
           <div className="mt-10">
-            <button
-              className="btn btn-secondary btn-md"
-              onClick={() => console.log('add')}
-            >
+            <button className="btn btn-secondary btn-md" onClick={addToCart}>
               Add to cart
             </button>
           </div>
