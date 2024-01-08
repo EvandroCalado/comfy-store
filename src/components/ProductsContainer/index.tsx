@@ -5,7 +5,9 @@ import { ProductsGrid, ProductsList } from '..';
 import { TypeProducts } from '../../types/type-products';
 
 export const ProductsContainer = () => {
-  const products = useLoaderData() as TypeProducts;
+  const { products }: { products: TypeProducts } = useLoaderData() as {
+    products: TypeProducts;
+  };
   const { total } = products.meta.pagination;
 
   const [layout, setLayout] = useState('grid');
