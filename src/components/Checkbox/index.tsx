@@ -1,20 +1,22 @@
-import { FC, InputHTMLAttributes } from 'react';
+import { FC, InputHTMLAttributes, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name?: string;
-  defaultValue?: string;
+  shipping?: string;
   className?: string;
 }
 
 export const Checkbox: FC<CheckboxProps> = ({
   label,
   name,
-  defaultValue,
+  shipping,
   className,
   ...rest
 }) => {
+  const [isChecked, setIsChecked] = useState(shipping === 'on' ? true : false);
+
   return (
     <div className="form-control items-center">
       <label htmlFor={name} className="label cursor-pointer">
@@ -23,7 +25,8 @@ export const Checkbox: FC<CheckboxProps> = ({
       <input
         type="checkbox"
         name={name}
-        defaultValue={defaultValue}
+        onChange={() => setIsChecked(!isChecked)}
+        checked={isChecked}
         className={twMerge('checkbox-primary checkbox', className)}
         {...rest}
       />

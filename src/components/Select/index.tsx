@@ -20,10 +20,15 @@ export const Select: FC<SelectProps> = ({
       <label htmlFor={name} className="label">
         <span className="label-text capitalize">{label}</span>
       </label>
-      <select {...rest} className={twMerge('select select-primary', className)}>
-        <option value="all">All</option>
+      <select
+        {...rest}
+        name={name}
+        id={name}
+        className={twMerge('select select-primary capitalize', className)}
+      >
+        <option value={''}></option>
         {list.map((item) => (
-          <option key={item} value={item}>
+          <option key={item} value={item} className="capitalize">
             {item}
           </option>
         ))}

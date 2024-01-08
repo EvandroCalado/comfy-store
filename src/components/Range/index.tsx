@@ -4,13 +4,20 @@ import { twMerge } from 'tailwind-merge';
 interface RangeProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name?: string;
+  price?: number;
   className?: string;
 }
 
-export const Range: FC<RangeProps> = ({ label, name, className, ...rest }) => {
+export const Range: FC<RangeProps> = ({
+  label,
+  name,
+  price,
+  className,
+  ...rest
+}) => {
   const maxPrice = 1000;
 
-  const [selectedPrice, setSelectedPrice] = useState(maxPrice);
+  const [selectedPrice, setSelectedPrice] = useState(price ?? maxPrice);
 
   return (
     <div className="form-control">
@@ -25,7 +32,7 @@ export const Range: FC<RangeProps> = ({ label, name, className, ...rest }) => {
         max={maxPrice.toFixed(2)}
         value={selectedPrice}
         onChange={(e) => setSelectedPrice(Number(e.target.value))}
-        step="10"
+        step="1"
         className={twMerge('range range-primary', className)}
         {...rest}
       />
