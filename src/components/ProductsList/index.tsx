@@ -2,7 +2,9 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { TypeFeatured } from '../../types/type-featured';
 
 export const ProductsList = () => {
-  const products = useLoaderData() as TypeFeatured;
+  const { products }: { products: TypeFeatured } = useLoaderData() as {
+    products: TypeFeatured;
+  };
 
   return (
     <div className="mt-12 grid gap-y-8">
