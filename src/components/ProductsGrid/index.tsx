@@ -1,8 +1,10 @@
 import { Link, useLoaderData } from 'react-router-dom';
-import { TypeFeatured } from '../../types/type-featured';
+import { TypeProducts } from '../../types/type-products';
 
 export const ProductsGrid = () => {
-  const products = useLoaderData() as TypeFeatured;
+  const { products } = useLoaderData() as {
+    products: TypeProducts;
+  };
 
   return (
     <div className="grid gap-4 pt-12 md:grid-cols-2 lg:grid-cols-3">
