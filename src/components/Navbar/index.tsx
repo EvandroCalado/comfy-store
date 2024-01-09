@@ -1,23 +1,16 @@
 import { Menu, Moon, ShoppingCart, Sun } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { toggleTheme } from '../../features/user/userSlice';
 import { RootState } from '../../store';
 import { Navlinks } from '../Navlinks';
 
-const locaTheme = localStorage.getItem('theme') ?? 'light';
-
 export const Navbar = () => {
-  const [theme, setTheme] = useState(locaTheme);
+  const dispatch = useDispatch();
 
   const handleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    dispatch(toggleTheme());
   };
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
 
   const numItemsInCart = useSelector(
     (state: RootState) => state.cartState.numItemsInCart,
