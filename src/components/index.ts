@@ -1,4 +1,7 @@
 export * from './Button';
+export * from './CartItem';
+export * from './CartItemsList';
+export * from './CartTotals';
 export * from './Checkbox';
 export * from './ErrorElement';
 export * from './FeaturedProducts';
