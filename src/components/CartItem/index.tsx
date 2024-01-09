@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { GenerateOptions } from '..';
 import {
   ProductProps,
@@ -39,7 +40,12 @@ export const CartItem: FC<CartItemProps> = ({ cartItem }) => {
       {/* info */}
       <div className="sm:ml-16 sm:w-48">
         {/* title */}
-        <h3 className="font-medium capitalize">{title}</h3>
+        <Link
+          to={`/products/${cartID.split('#')[0]}`}
+          className="link-hover link link-primary font-medium capitalize"
+        >
+          {title}
+        </Link>
         {/* company */}
         <h4 className="mt-2 text-sm capitalize text-neutral-content">
           {company}
