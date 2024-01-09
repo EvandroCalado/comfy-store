@@ -12,7 +12,7 @@ export interface ProductProps {
   amount: number;
 }
 
-export interface InitialStateProps {
+export interface CartInitialStateProps {
   cartItems: ProductProps[];
   numItemsInCart: number;
   cartTotal: number;
@@ -21,7 +21,7 @@ export interface InitialStateProps {
   orderTotal: number;
 }
 
-const initialState: InitialStateProps = {
+const cartInitialState: CartInitialStateProps = {
   cartItems: [],
   numItemsInCart: 0,
   cartTotal: 0,
@@ -30,9 +30,9 @@ const initialState: InitialStateProps = {
   orderTotal: 0,
 };
 
-const getCartFromLocalStorage = (): InitialStateProps => {
+const getCartFromLocalStorage = (): CartInitialStateProps => {
   const cart = localStorage.getItem('cart')!;
-  return (JSON.parse(cart) as InitialStateProps) ?? initialState;
+  return (JSON.parse(cart) as CartInitialStateProps) ?? cartInitialState;
 };
 
 const cartSlice = createSlice({
@@ -56,8 +56,8 @@ const cartSlice = createSlice({
     },
 
     clearCart: () => {
-      localStorage.setItem('cart', JSON.stringify(initialState));
-      return initialState;
+      localStorage.setItem('cart', JSON.stringify(cartInitialState));
+      return cartInitialState;
     },
 
     removeItem: (state, action) => {
