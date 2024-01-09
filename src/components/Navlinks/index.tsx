@@ -1,4 +1,6 @@
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { RootState } from '../../store';
 
 const links = [
   { id: 1, url: '/', text: 'home' },
@@ -10,10 +12,17 @@ const links = [
 ];
 
 export const Navlinks = () => {
+  const user = useSelector((state: RootState) => state.userState.user);
+
   return (
     <>
       {links.map((link) => {
         const { id, url, text } = link;
+
+        if ((url === 'checkout' || url === 'orders') && !user) {
+          return null;
+        }
+
         return (
           <li key={id}>
             <NavLink to={url} className="capitalize">

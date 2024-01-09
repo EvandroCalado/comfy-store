@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
 interface UserInitialStateProps {
   user: {
     username: string;
-  };
+  } | null;
   theme: string;
 }
 
@@ -31,8 +32,10 @@ const userSlice = createSlice({
       console.log('login');
     },
 
-    logoutUser: (state, action) => {
-      console.log('logout');
+    logoutUser: (state) => {
+      state.user = null;
+      localStorage.removeItem('user');
+      toast.success('Logged out successfully');
     },
 
     toggleTheme: (state) => {

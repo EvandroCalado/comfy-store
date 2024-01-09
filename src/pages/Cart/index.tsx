@@ -4,7 +4,7 @@ import { CartItemsList, CartTotals, SectionTitle } from '../../components';
 import { RootState } from '../../store';
 
 export const Cart = () => {
-  const user = null;
+  const user = useSelector((state: RootState) => state.userState.user);
   const numItemsInCart = useSelector(
     (state: RootState) => state.cartState.numItemsInCart,
   );
