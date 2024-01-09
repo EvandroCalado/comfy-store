@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 export interface ProductProps {
   cartID: string;
@@ -68,7 +68,8 @@ const cartSlice = createSlice({
       state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID);
       state.numItemsInCart -= product.amount;
       state.cartTotal -= product.amount * product.price;
-      toast.error('Item removed from cart');
+      cartSlice.caseReducers.calculateTotals(state);
+      toast.success('Item removed from cart');
     },
 
     editItem: (state, action) => {
