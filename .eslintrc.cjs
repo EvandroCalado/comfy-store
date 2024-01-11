@@ -27,5 +27,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
+    '@typescript-eslint/no-misused-promises': 'off',
   },
 };
