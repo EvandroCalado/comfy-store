@@ -1,16 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { destroyCookie, setCookie } from 'nookies';
 import toast from 'react-hot-toast';
 
+interface UserProps {
+  blocked: boolean;
+  confirmed: boolean;
+  createdAt: string;
+  email: string;
+  id: number;
+  provider: string;
+  updatedAt: string;
+  username: string;
+}
+
 interface UserInitialStateProps {
-  user: {
-    username: string;
-  } | null;
+  user: UserProps | null;
   theme: string;
 }
 
 const themes = {
   light: 'light',
-  dark: 'dracula',
+  dark: 'dark',
+};
+
+const getUserFromLocalStorage = (): UserInitialStateProps['user'] | null => {
+  const user = localStorage.getItem('user');
+  return JSON.parse(user || 'null') as UserInitialStateProps['user'];
 };
 
 const getThemeFromLocalStorage = () => {
@@ -20,7 +35,7 @@ const getThemeFromLocalStorage = () => {
 };
 
 const userInitialState: UserInitialStateProps = {
-  user: { username: 'Evandro Calado' },
+  user: getUserFromLocalStorage(),
   theme: getThemeFromLocalStorage(),
 };
 
@@ -29,11 +44,34 @@ const userSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     loginUser: (state, action) => {
-      console.log('login');
+      const { user } = action.payload as {
+        user: UserProps;
+      };
+
+      state.user = user;
+
+      const { jwt } = action.payload as {
+        jwt: string;
+      };
+
+      setCookie(null, '@token', jwt, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+        httponly: true,
+        secure: true,
+        sameSite: 'strict',
+      });
+      localStorage.setItem('user', JSON.stringify(user));
     },
 
     logoutUser: (state) => {
       state.user = null;
+      destroyCookie(null, '@token', {
+        path: '/',
+        httponly: true,
+        secure: true,
+        sameSite: 'strict',
+      });
       localStorage.removeItem('user');
       toast.success('Logged out successfully');
     },
