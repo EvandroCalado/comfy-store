@@ -1,6 +1,6 @@
 import { Params } from 'react-router-dom';
-import { TypeProduct } from '../types/type-product';
-import { customFetch } from '../utils';
+import { TypeProduct } from '../../types/type-product';
+import { customFetch } from '../../utils';
 
 export const featuredLoader = async ({ params }: { params: Params }) => {
   const response = await customFetch(`/products/${params.id}?populate=*`);

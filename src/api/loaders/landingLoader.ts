@@ -1,5 +1,5 @@
-import { TypeProducts } from '../types/type-products';
-import { customFetch } from '../utils';
+import { TypeProducts } from '../../types/type-products';
+import { customFetch } from '../../utils';
 
 const url = '/products?populate=*&filters[featured][$eq]=true';
 
