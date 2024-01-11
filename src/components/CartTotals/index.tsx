@@ -30,7 +30,7 @@ export const CartTotals = () => {
         {/* order total */}
         <p className="mt-4 flex justify-between pb-2 text-sm">
           <span>Order Total</span>
-          <span className="font-medium">R${orderTotal}</span>
+          <span className="font-medium">R${orderTotal.toFixed(2)}</span>
         </p>
       </div>
     </div>

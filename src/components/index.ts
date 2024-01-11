@@ -3,6 +3,7 @@ export * from './CartItem';
 export * from './CartItemsList';
 export * from './CartTotals';
 export * from './Checkbox';
+export * from './CheckoutForm';
 export * from './ErrorElement';
 export * from './FeaturedProducts';
 export * from './Filters';

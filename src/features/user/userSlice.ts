@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { destroyCookie, setCookie } from 'nookies';
 import toast from 'react-hot-toast';
 
-interface UserProps {
+export interface UserProps {
   blocked: boolean;
   confirmed: boolean;
   createdAt: string;

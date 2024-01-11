@@ -13,13 +13,18 @@ import {
   Products,
   Register,
 } from './pages';
+import { store } from './store';
 
 // loaders
-import { featuredLoader, landingLoader, productsLoader } from './api/loaders';
+import {
+  checkoutLoader,
+  featuredLoader,
+  landingLoader,
+  productsLoader,
+} from './api/loaders';
 
 // actions
 import { loginAction, registerAction } from './api/actions';
-import { store } from './store';
 
 const router = createBrowserRouter([
   {
@@ -56,6 +61,7 @@ const router = createBrowserRouter([
       {
         path: 'checkout',
         element: <Checkout />,
+        loader: checkoutLoader(store),
       },
       {
         path: 'orders',
