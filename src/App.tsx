@@ -15,9 +15,11 @@ import {
 } from './pages';
 
 // loaders
-import { featuredLoader, landingLoader, productsLoader } from './api';
+import { featuredLoader, landingLoader, productsLoader } from './api/loaders';
 
 // actions
+import { loginAction, registerAction } from './api/actions';
+import { store } from './store';
 
 const router = createBrowserRouter([
   {
@@ -65,11 +67,13 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
     errorElement: <Error />,
+    action: loginAction(store),
   },
   {
     path: '/register',
     element: <Register />,
     errorElement: <Error />,
+    action: registerAction,
   },
 ]);
 

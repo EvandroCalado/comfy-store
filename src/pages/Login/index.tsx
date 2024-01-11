@@ -10,19 +10,9 @@ export const Login = () => {
       >
         <h4 className="text-center text-3xl font-bold">Login</h4>
 
-        <Input
-          label="Email"
-          type="email"
-          name="identifier"
-          defaultValue="test@gmail.com"
-        />
+        <Input label="Email" type="email" name="identifier" />
 
-        <Input
-          label="Password"
-          type="password"
-          name="password"
-          defaultValue="secret"
-        />
+        <Input label="Password" type="password" name="password" />
 
         <Button type="submit" className="mt-4">
           Login
