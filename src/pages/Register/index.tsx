@@ -10,9 +10,9 @@ export const Register = () => {
       >
         <h4 className="text-center text-3xl font-bold">Register</h4>
 
-        <Input label="Username" name="username" type="text" />
-        <Input label="Email" name="email" type="email" />
-        <Input label="Password" name="password" type="password" />
+        <Input type="text" label="Username" name="username" />
+        <Input type="email" label="Email" name="email" />
+        <Input type="password" label="Password" name="password" />
 
         <Button type="submit" className="mt-4">
           Register
