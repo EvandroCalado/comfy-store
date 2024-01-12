@@ -28,9 +28,9 @@ export const productsLoader = async ({ request }: { request: Request }) => {
     ? `&pagination[page]=${params.page}&pagination[pageSize]=6`
     : `&pagination[page]=1&pagination[pageSize]=6`;
 
-  const response = await customFetch(
+  const { data }: { data: TypeProducts } = await customFetch(
     `${url}${searchFilter}${categoryFilter}${companyFilter}${orderFilter}${priceFilter}${shippingFilter}${pagination}`,
   );
-  const products = response.data as TypeProducts;
-  return { products, params };
+
+  return { products: data, meta: data.meta, params };
 };
