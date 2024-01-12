@@ -20,6 +20,7 @@ import {
   checkoutLoader,
   featuredLoader,
   landingLoader,
+  orderLoader,
   productsLoader,
 } from './api/loaders';
 
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
       {
         path: 'orders',
         element: <Orders />,
+        loader: orderLoader(store),
       },
     ],
   },
