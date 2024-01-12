@@ -24,7 +24,7 @@ import {
 } from './api/loaders';
 
 // actions
-import { loginAction, registerAction } from './api/actions';
+import { loginAction, orderAction, registerAction } from './api/actions';
 
 const router = createBrowserRouter([
   {
@@ -62,6 +62,7 @@ const router = createBrowserRouter([
         path: 'checkout',
         element: <Checkout />,
         loader: checkoutLoader(store),
+        action: orderAction(store),
       },
       {
         path: 'orders',

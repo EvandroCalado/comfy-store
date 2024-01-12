@@ -13,7 +13,7 @@ export interface UserProps {
   username: string;
 }
 
-interface UserInitialStateProps {
+export interface UserInitialStateProps {
   user: UserProps | null;
   theme: string;
 }
