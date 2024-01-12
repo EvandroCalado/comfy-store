@@ -13,6 +13,7 @@ export * from './Hero';
 export * from './Input';
 export * from './Loading';
 export * from './Navbar';
+export * from './OrderList';
 export * from './PaginationContainer';
 export * from './ProductsContainer';
 export * from './ProductsGrid';
