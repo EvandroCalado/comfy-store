@@ -58,6 +58,10 @@ export const orderAction =
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const errorMessage = error?.response?.data?.error?.message as string;
         toast.error(errorMessage);
+
+        if (error.response?.status === 401 || error.response?.status === 403) {
+          return redirect('/login');
+        }
         return null;
       }
     }
