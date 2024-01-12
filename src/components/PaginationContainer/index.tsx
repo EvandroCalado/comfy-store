@@ -2,10 +2,10 @@ import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { TypeProducts } from '../../types/type-products';
 
 export const PaginationContainer = () => {
-  const { products } = useLoaderData() as {
-    products: TypeProducts;
+  const { meta } = useLoaderData() as {
+    meta: TypeProducts['meta'];
   };
-  const { page, pageCount } = products.meta.pagination;
+  const { page, pageCount } = meta.pagination;
   const pages = Array.from({ length: pageCount }, (_, i) => i + 1);
   const { search, pathname } = useLocation();
   const navigate = useNavigate();
