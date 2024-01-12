@@ -17,7 +17,17 @@ export const orderAction =
       store.getState() as RootState
     ).cartState;
 
+    if (!name || !address) {
+      toast.error('Name and address are required');
+      return null;
+    }
+
     const { '@token': token } = parseCookies();
+
+    if (!token) {
+      toast.error('You must be logged in to place an order');
+      return null;
+    }
 
     try {
       await customFetch.post(
