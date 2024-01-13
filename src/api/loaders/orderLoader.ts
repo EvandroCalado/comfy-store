@@ -33,6 +33,7 @@ export const orderLoader =
     ]);
 
     const orderFilter = `?populate=*&filters[user][id][$eq]=${user.id}`;
+    const sortFilter = '&sort[0]=id:desc';
     const pagination = params.page
       ? `&pagination[page]=${params.page}&pagination[pageSize]=6`
       : `&pagination[page]=1&pagination[pageSize]=6`;
@@ -41,7 +42,7 @@ export const orderLoader =
 
     try {
       const { data }: { data: TypeOrder } = await queryClient.ensureQueryData(
-        ordersQeury(`${orderFilter}${pagination}`, token),
+        ordersQeury(`${orderFilter}${sortFilter}${pagination}`, token),
       );
 
       return {

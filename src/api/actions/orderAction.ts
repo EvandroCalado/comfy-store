@@ -1,4 +1,5 @@
 import { Store } from '@reduxjs/toolkit';
+import { QueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { parseCookies } from 'nookies';
 import toast from 'react-hot-toast';
@@ -8,7 +9,7 @@ import { RootState } from '../../store';
 import { customFetch } from '../../utils';
 
 export const orderAction =
-  (store: Store) =>
+  (store: Store, queryClient: QueryClient) =>
   async ({ request }: { request: Request }) => {
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
@@ -48,6 +49,8 @@ export const orderAction =
           },
         },
       );
+
+      queryClient.removeQueries(['ordersQuery']);
 
       store.dispatch(clearCart());
       toast.success('Order placed successfully');
