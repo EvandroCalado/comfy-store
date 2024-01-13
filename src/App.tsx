@@ -18,14 +18,24 @@ import { store } from './store';
 // loaders
 import {
   checkoutLoader,
-  featuredLoader,
   landingLoader,
   orderLoader,
+  productLoader,
   productsLoader,
 } from './api/loaders';
 
 // actions
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { loginAction, orderAction, registerAction } from './api/actions';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5,
+    },
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -37,19 +47,19 @@ const router = createBrowserRouter([
         index: true,
         element: <Landing />,
         errorElement: <ErrorElement />,
-        loader: landingLoader,
+        loader: landingLoader(queryClient),
       },
       {
         path: 'products',
         element: <Products />,
         errorElement: <ErrorElement />,
-        loader: productsLoader,
+        loader: productsLoader(queryClient),
       },
       {
         path: 'products/:id',
         element: <Product />,
         errorElement: <ErrorElement />,
-        loader: featuredLoader,
+        loader: productLoader(queryClient),
       },
       {
         path: 'cart',
@@ -63,12 +73,12 @@ const router = createBrowserRouter([
         path: 'checkout',
         element: <Checkout />,
         loader: checkoutLoader(store),
-        action: orderAction(store),
+        action: orderAction(store, queryClient),
       },
       {
         path: 'orders',
         element: <Orders />,
-        loader: orderLoader(store),
+        loader: orderLoader(store, queryClient),
       },
     ],
   },
@@ -87,7 +97,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;
