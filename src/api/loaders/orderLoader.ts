@@ -1,4 +1,5 @@
 import { Store } from '@reduxjs/toolkit';
+import { QueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { parseCookies } from 'nookies';
 import toast from 'react-hot-toast';
@@ -7,8 +8,18 @@ import { RootState } from '../../store';
 import { TypeOrder } from '../../types/type-order';
 import { customFetch } from '../../utils';
 
+const ordersQeury = (params: string, token: string) => {
+  return {
+    queryKey: ['ordersQuery', params, token],
+    queryFn: () =>
+      customFetch(`/orders${params}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      }),
+  };
+};
+
 export const orderLoader =
-  (store: Store) =>
+  (store: Store, queryClient: QueryClient) =>
   async ({ request }: { request: Request }) => {
     const user = (store.getState() as RootState).userState.user;
 
@@ -29,13 +40,8 @@ export const orderLoader =
     const { '@token': token } = parseCookies();
 
     try {
-      const { data }: { data: TypeOrder } = await customFetch.get(
-        `/orders${orderFilter}${pagination}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
+      const { data }: { data: TypeOrder } = await queryClient.ensureQueryData(
+        ordersQeury(`${orderFilter}${pagination}`, token),
       );
 
       return {
