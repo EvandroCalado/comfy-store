@@ -9,7 +9,7 @@ export const OrderList = () => {
   };
 
   return (
-    <div className="mt-8 min-h-[36vh]">
+    <div className="mt-8 min-h-[36.5vh]">
       <h4 className="mb-4 capitalize">total orders: {meta.pagination.total}</h4>
 
       <div className="overflow-x-auto">
