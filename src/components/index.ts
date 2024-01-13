@@ -7,6 +7,7 @@ export * from './CheckoutForm';
 export * from './ErrorElement';
 export * from './FeaturedProducts';
 export * from './Filters';
+export * from './Footer';
 export * from './GenerateOptions';
 export * from './Header';
 export * from './Hero';

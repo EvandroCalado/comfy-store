@@ -1,5 +1,5 @@
 import { Outlet, useNavigation } from 'react-router-dom';
-import { Header, Loading, Navbar } from '../../components';
+import { Footer, Header, Loading, Navbar } from '../../components';
 
 export const Home = () => {
   const navigation = useNavigation();
@@ -17,6 +17,8 @@ export const Home = () => {
           <Outlet />
         </section>
       )}
+
+      <Footer />
     </>
   );
 };
