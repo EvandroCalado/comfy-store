@@ -8,7 +8,9 @@ export const Checkout = () => {
   );
 
   if (cartTotal === 0) {
-    return <SectionTitle>Your cart is empty</SectionTitle>;
+    return (
+      <SectionTitle className={`h-[55vh]`}>Your cart is empty</SectionTitle>
+    );
   }
 
   return (

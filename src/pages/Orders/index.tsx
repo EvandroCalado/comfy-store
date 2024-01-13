@@ -6,7 +6,9 @@ export const Orders = () => {
   const { meta } = useLoaderData() as { meta: TypeOrder['meta'] };
 
   if (meta.pagination.total < 1) {
-    return <SectionTitle>Please make an order</SectionTitle>;
+    return (
+      <SectionTitle className={`h-[55vh]`}>Please make an order</SectionTitle>
+    );
   }
 
   return (

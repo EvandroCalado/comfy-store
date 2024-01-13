@@ -45,7 +45,7 @@ export const ProductsContainer = () => {
       </div>
 
       {/* products */}
-      <div>
+      <div className="min-h-[19vh]">
         {total === 0 ? (
           <h5 className="mt-16 text-2xl">
             Sorry, no products matched your search...

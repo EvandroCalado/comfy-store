@@ -1,7 +1,7 @@
 export const About = () => {
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-x-6">
+      <div className="flex min-h-[41vh] flex-wrap items-center justify-center gap-2 sm:gap-x-6">
         <h1 className="text-4xl font-bold leading-none tracking-tight sm:text-6xl">
           We love
         </h1>

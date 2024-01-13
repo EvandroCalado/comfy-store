@@ -8,10 +8,10 @@ export const CartItemsList = () => {
   );
 
   return (
-    <>
+    <div className="min-h-[48vh]">
       {cartItems.map((item) => (
         <CartItem key={item.cartID} cartItem={item} />
       ))}
-    </>
+    </div>
   );
 };
