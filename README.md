@@ -41,23 +41,24 @@ Bem-vindo ao Comfy Store! Este é um projeto de e-commerce construído em React 
 comfy-store/
 │
 ├── src/
-|   ├── api/              # Actions e loaders
-│   ├── components/       # Componentes reutilizáveis
-│   ├── features/         # Configuração do Redux
-│   ├── pages/            # Páginas da aplicação
-│   ├── types/            # Tipagens
-│   ├── utils/            # Funções utilitárias
-│   └── App.tsx           # Ponto de entrada da aplicação
+|   ├── api/                  # Actions e loaders
+│   ├── components/           # Componentes reutilizáveis
+│   ├── features/             # Configuração do Redux
+│   ├── pages/                # Páginas da aplicação
+│   ├── types/                # Tipagens
+│   ├── utils/                # Funções utilitárias
+│   └── App.tsx               # Ponto de entrada da aplicação
 │
-├── public/               # Recursos estáticos e HTML base
-├── .gitignore            # Arquivos a serem ignorados pelo Git
-├── .env.local            # Para variáveis de ambiente
-├── tsconfig.json         # Configuração do TypeScript
-├── vite.config.js        # Configuração do Vite
-├── package.json          # Dependências e scripts do projeto
-├── .eslintrc.js          # Configuração do ESLint
-├── .prettierrc           # Configuração do Prettier
-└── README.md             # Documentação do projeto (você está aqui!)
+├── public/                   # Recursos estáticos e HTML base
+├── .editorconfig             # Configurações do editor
+├── .gitignore                # Arquivos a serem ignorados pelo Git
+├── .env.local                # Para variáveis de ambiente
+├── tsconfig.json             # Configuração do TypeScript
+├── vite.config.js            # Configuração do Vite
+├── package.json              # Dependências e scripts do projeto
+├── .eslintrc.js              # Configuração do ESLint
+├── .prettierrc               # Configuração do Prettier
+└── README.md                 # Documentação do projeto (você está aqui!)
 ```
 
 ## Licença
