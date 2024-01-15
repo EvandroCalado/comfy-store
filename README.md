@@ -1,30 +1,69 @@
-# React + TypeScript + Vite
+# Comfy Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao Comfy Store! Este é um projeto de e-commerce construído em React com Vite, utilizando Tailwind CSS com Daisy UI para estilização, TypeScript para tipagem, Redux para gerenciamento de estado e React Query para facilitar o gerenciamento de dados assíncronos. Possue integração com API feita com strapi CMS.
 
-Currently, two official plugins are available:
+## Como começar
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Clone o repositório:**
 
-## Expanding the ESLint configuration
+   ```bash
+   git clone https://github.com/evandrocalado/comfy-store.git
+   cd comfy-store
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Instale as dependências:**
 
-- Configure the top-level `parserOptions` property like this:
+   ```bash
+   npm install
+   ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+3. **Execute o projeto:**
+
+   ```bash
+   npm run dev
+   ```
+
+   Isso iniciará o servidor de desenvolvimento. Abra [http://localhost:3000](http://localhost:3000) no seu navegador para visualizar o Comfy Store.
+
+## Tecnologias utilizadas
+
+- **React:** Biblioteca de construção de interfaces de usuário.
+- **Vite:** Build tool rápida e configurável para projetos web modernos.
+- **Tailwind CSS:** Framework CSS utilitário para estilização rápida e eficiente.
+- **Daisy UI:** Conjunto de componentes prontos para uso que se integram perfeitamente ao Tailwind CSS.
+- **TypeScript:** Adiciona tipagem estática ao JavaScript para uma experiência de desenvolvimento mais robusta.
+- **Redux:** Biblioteca para gerenciamento de estado na aplicação.
+- **React Query:** Facilita o gerenciamento de dados assíncronos no React.
+
+## Estrutura do projeto
+
+```
+comfy-store/
+│
+├── src/
+|   ├── api/              # Actions e loaders
+│   ├── components/       # Componentes reutilizáveis
+│   ├── features/         # Configuração do Redux
+│   ├── pages/            # Páginas da aplicação
+│   ├── types/            # Tipagens
+│   ├── utils/            # Funções utilitárias
+│   └── App.tsx           # Ponto de entrada da aplicação
+│
+├── public/               # Recursos estáticos e HTML base
+├── .gitignore            # Arquivos a serem ignorados pelo Git
+├── .env.local            # Para variáveis de ambiente
+├── tsconfig.json         # Configuração do TypeScript
+├── vite.config.js        # Configuração do Vite
+├── package.json          # Dependências e scripts do projeto
+├── .eslintrc.js          # Configuração do ESLint
+├── .prettierrc           # Configuração do Prettier
+└── README.md             # Documentação do projeto (você está aqui!)
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+---
+
+Divirta-se explorando e construindo com o Comfy Store! 🚀
