@@ -24,7 +24,8 @@
   },
   "include": [
     "src",
-    "./tailwind.config.js"
+    "./tailwind.config.js",
+    "./.test/setup.ts"
   ],
   "references": [
     {
