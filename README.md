@@ -50,11 +50,13 @@ comfy-store/
 │   └── App.tsx               # Ponto de entrada da aplicação
 │
 ├── public/                   # Recursos estáticos e HTML base
+├── .test/                    # Setup para testes
 ├── .editorconfig             # Configurações do editor
 ├── .gitignore                # Arquivos a serem ignorados pelo Git
 ├── .env.local                # Para variáveis de ambiente
 ├── tsconfig.json             # Configuração do TypeScript
 ├── vite.config.js            # Configuração do Vite
+├── citest.config.js          # Configuração do Vitest
 ├── package.json              # Dependências e scripts do projeto
 ├── .eslintrc.js              # Configuração do ESLint
 ├── .prettierrc               # Configuração do Prettier
