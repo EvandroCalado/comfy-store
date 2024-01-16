@@ -9,3 +9,4 @@ export * from './Orders';
 export * from './Product';
 export * from './Products';
 export * from './Register';
+export * from './wishlist';
