@@ -12,6 +12,7 @@ import {
   Product,
   Products,
   Register,
+  Wishlist,
 } from './pages';
 import { store } from './store';
 
@@ -28,6 +29,7 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { loginAction, orderAction, registerAction } from './api/actions';
+import { wishlistLoader } from './api/loaders/wishlistLoader';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,6 +62,11 @@ const router = createBrowserRouter([
         element: <Product />,
         errorElement: <ErrorElement />,
         loader: productLoader(queryClient),
+      },
+      {
+        path: 'wishlist',
+        element: <Wishlist />,
+        loader: wishlistLoader(store),
       },
       {
         path: 'cart',
