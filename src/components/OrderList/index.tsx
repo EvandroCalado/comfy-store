@@ -8,9 +8,11 @@ export const OrderList = () => {
     meta: TypeOrder['meta'];
   };
 
+  const { total } = meta.pagination;
+
   return (
     <div className="mt-8 min-h-[36.5vh]">
-      <h4 className="mb-4 capitalize">total orders: {meta.pagination.total}</h4>
+      <h4 className="mb-4 capitalize">total orders: {total}</h4>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra">
