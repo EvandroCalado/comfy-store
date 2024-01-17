@@ -47,7 +47,7 @@ export const Navbar = () => {
         </div>
         <div className="navbar-end">
           {/* theme setup */}
-          <label className="swap swap-rotate">
+          <label className="btn btn-circle btn-ghost swap swap-rotate">
             <input type="checkbox" onChange={handleTheme} />
             {/* sun icon */}
             <Sun className="swap-on" />
@@ -55,7 +55,7 @@ export const Navbar = () => {
             <Moon className="swap-off" />
           </label>
           {/* cart icon */}
-          <NavLink to="/cart" className="btn btn-circle btn-ghost btn-md ml-4">
+          <NavLink to="/cart" className="btn btn-circle btn-ghost btn-md ml-2">
             <div className="indicator">
               <ShoppingCart />
               <span className="badge indicator-item badge-primary badge-sm">
