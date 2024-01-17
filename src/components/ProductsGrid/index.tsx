@@ -1,10 +1,18 @@
+import { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { TypeProducts } from '../../types/type-products';
 
 export const ProductsGrid = () => {
+  const [imageLoading, setImageLoading] = useState(true);
   const { products } = useLoaderData() as {
     products: TypeProducts;
   };
+
+  useEffect(() => {
+    if (products.data.length > 0) {
+      setImageLoading(false);
+    }
+  });
 
   return (
     <div className="grid gap-4 pt-12 md:grid-cols-2 lg:grid-cols-3">
@@ -21,7 +29,11 @@ export const ProductsGrid = () => {
               <img
                 src={image.data.attributes.formats.small.url}
                 alt={title}
-                className="h-64 w-full object-cover transition duration-300 group-hover:scale-105 md:h-48"
+                className={`h-64 w-full object-cover transition duration-300 group-hover:scale-105 md:h-48 ${
+                  imageLoading
+                    ? 'scale-110 blur-3xl grayscale'
+                    : 'scale-100 blur-0 grayscale-0'
+                }`}
               />
             </figure>
 
