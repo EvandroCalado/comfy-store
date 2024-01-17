@@ -9,6 +9,7 @@ const links = [
   { id: 4, url: 'cart', text: 'cart' },
   { id: 5, url: 'checkout', text: 'checkout' },
   { id: 6, url: 'orders', text: 'orders' },
+  { id: 7, url: 'wishlist', text: 'wishlist' },
 ];
 
 export const Navlinks = () => {
@@ -19,7 +20,10 @@ export const Navlinks = () => {
       {links.map((link) => {
         const { id, url, text } = link;
 
-        if ((url === 'checkout' || url === 'orders') && !user) {
+        if (
+          (url === 'checkout' || url === 'orders' || url === 'wishlist') &&
+          !user
+        ) {
           return null;
         }
 
