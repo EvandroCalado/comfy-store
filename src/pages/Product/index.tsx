@@ -1,17 +1,29 @@
+import { parseCookies } from 'nookies';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { GenerateOptions } from '../../components';
 import { addItem } from '../../features/cart/cartSlice';
+import { RootState } from '../../store';
 import { TypeProduct } from '../../types/type-product';
+import { customFetch } from '../../utils';
 
 export const Product = () => {
-  const { product } = useLoaderData() as { product: TypeProduct };
+  const [loading, setLoading] = useState(false);
+  const [amount, setAmount] = useState(1);
+  const user = useSelector((state: RootState) => state.userState.user);
+  const { product, isOnWishlist, wishlistId } = useLoaderData() as {
+    product: TypeProduct;
+    isOnWishlist: boolean;
+    wishlistId: number;
+  };
+
   const { image, title, company, price, description, colors } =
     product.data.attributes;
 
   const [productColor, setProductColor] = useState(colors[0]);
-  const [amount, setAmount] = useState(1);
+
+  const navigate = useNavigate();
 
   const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setAmount(Number(e.target.value));
@@ -36,6 +48,41 @@ export const Product = () => {
     );
   };
 
+  const handleAddToWishlist = async () => {
+    setLoading(true);
+
+    const { '@token': token } = parseCookies();
+
+    await customFetch.post(
+      '/wishlists',
+      {
+        data: {
+          user: user?.id,
+          product: product.data.id,
+        },
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
+
+    setLoading(false);
+    navigate(0);
+  };
+
+  const handleDelete = async (id: number) => {
+    setLoading(true);
+
+    const { '@token': token } = parseCookies();
+
+    await customFetch.delete(`/wishlists/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    setLoading(false);
+    navigate(0);
+  };
+
   return (
     <section>
       <div className="breadcrumbs">
@@ -54,7 +101,7 @@ export const Product = () => {
         <img
           src={image.data.attributes.url}
           alt={title}
-          className="h-96 w-full rounded-lg object-cover"
+          className="h-96 w-full rounded-lg object-cover "
         />
         {/* details */}
         <div>
@@ -96,10 +143,29 @@ export const Product = () => {
             </select>
           </div>
           {/* cart button */}
-          <div className="mt-10">
+          <div className="mt-10 flex items-center gap-x-16">
             <button className="btn btn-secondary btn-md" onClick={addToCart}>
               Add to cart
             </button>
+
+            {/* wishlist button */}
+            {isOnWishlist ? (
+              <button
+                className="btn btn-secondary btn-md"
+                disabled={loading}
+                onClick={() => handleDelete(wishlistId)}
+              >
+                {loading ? 'Removing...' : 'Remove to wishlist'}
+              </button>
+            ) : (
+              <button
+                className="btn btn-secondary btn-md"
+                disabled={loading}
+                onClick={handleAddToWishlist}
+              >
+                {loading ? 'Adding...' : 'Add to wishlist'}
+              </button>
+            )}
           </div>
         </div>
       </div>
