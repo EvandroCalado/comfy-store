@@ -66,7 +66,7 @@ const router = createBrowserRouter([
       {
         path: 'wishlist',
         element: <Wishlist />,
-        loader: wishlistLoader(store),
+        loader: wishlistLoader(store, queryClient),
       },
       {
         path: 'cart',

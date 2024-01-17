@@ -1,4 +1,5 @@
 import { Store } from '@reduxjs/toolkit';
+import { QueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { parseCookies } from 'nookies';
 import toast from 'react-hot-toast';
@@ -7,8 +8,21 @@ import { RootState } from '../../store';
 import { TypeWishlist } from '../../types/type-wishlist';
 import { customFetch } from '../../utils';
 
+const wishlistQuery = (id: number, params: string, token: string) => {
+  return {
+    queryKey: ['wishlistQuery', id, params, token],
+    queryFn: () =>
+      customFetch(
+        `/wishlists?populate[product][populate][0]=image&filters[user][id][$eq]=${id}${params}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      ),
+  };
+};
+
 export const wishlistLoader =
-  (store: Store) =>
+  (store: Store, queryClient: QueryClient) =>
   async ({ request }: { request: Request }) => {
     const user = (store.getState() as RootState).userState.user;
 
@@ -29,12 +43,10 @@ export const wishlistLoader =
     const { '@token': token } = parseCookies();
 
     try {
-      const { data }: { data: TypeWishlist } = await customFetch.get(
-        `/wishlists?populate[product][populate][0]=image&filters[user][id][$eq]=${user.id}${pagination}${sort}`,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        },
-      );
+      const { data }: { data: TypeWishlist } =
+        await queryClient.ensureQueryData(
+          wishlistQuery(user.id, `${sort}${pagination}`, token),
+        );
 
       return {
         wishlist: data,
