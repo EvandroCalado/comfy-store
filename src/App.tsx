@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ErrorElement } from './components';
 import {
@@ -23,13 +25,11 @@ import {
   orderLoader,
   productLoader,
   productsLoader,
+  wishlistLoader,
 } from './api/loaders';
 
 // actions
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { loginAction, orderAction, registerAction } from './api/actions';
-import { wishlistLoader } from './api/loaders/wishlistLoader';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         path: 'products/:id',
         element: <Product />,
         errorElement: <ErrorElement />,
-        loader: productLoader(queryClient),
+        loader: productLoader(store, queryClient),
       },
       {
         path: 'wishlist',
