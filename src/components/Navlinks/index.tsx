@@ -6,10 +6,9 @@ const links = [
   { id: 1, url: '/', text: 'home' },
   { id: 2, url: 'about', text: 'about' },
   { id: 3, url: 'products', text: 'products' },
-  { id: 4, url: 'cart', text: 'cart' },
-  { id: 5, url: 'checkout', text: 'checkout' },
-  { id: 6, url: 'orders', text: 'orders' },
-  { id: 7, url: 'wishlist', text: 'wishlist' },
+  { id: 4, url: 'checkout', text: 'checkout' },
+  { id: 5, url: 'orders', text: 'orders' },
+  { id: 6, url: 'wishlist', text: 'wishlist' },
 ];
 
 export const Navlinks = () => {
