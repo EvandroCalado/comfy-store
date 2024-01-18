@@ -61,12 +61,12 @@ const router = createBrowserRouter([
         path: 'products/:id',
         element: <Product />,
         errorElement: <ErrorElement />,
-        loader: productLoader(store, queryClient),
+        loader: productLoader(queryClient),
       },
       {
         path: 'wishlist',
         element: <Wishlist />,
-        loader: wishlistLoader(store, queryClient),
+        loader: wishlistLoader(store),
       },
       {
         path: 'cart',

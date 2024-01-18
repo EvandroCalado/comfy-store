@@ -1,5 +1,5 @@
 import { parseCookies } from 'nookies';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Link,
@@ -11,16 +11,18 @@ import { GenerateOptions } from '../../components';
 import { addItem } from '../../features/cart/cartSlice';
 import { RootState } from '../../store';
 import { TypeProduct } from '../../types/type-product';
+import { TypeWishlist } from '../../types/type-wishlist';
 import { customFetch } from '../../utils';
 
 export const Product = () => {
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState(1);
+  const [isOnWishlist, setIsOnWishlist] = useState(false);
+  const [wishlistId, setWishlistId] = useState(0);
+
   const user = useSelector((state: RootState) => state.userState.user);
-  const { product, isOnWishlist, wishlistId } = useLoaderData() as {
+  const { product } = useLoaderData() as {
     product: TypeProduct;
-    isOnWishlist: boolean;
-    wishlistId: number;
   };
 
   const { image, title, company, price, description, colors } =
@@ -78,7 +80,6 @@ export const Product = () => {
     );
 
     setLoading(false);
-    navigate(0);
   };
 
   const handleDelete = async (id: number) => {
@@ -91,8 +92,36 @@ export const Product = () => {
     });
 
     setLoading(false);
-    navigate(0);
   };
+
+  const handleWishlist = async () => {
+    if (user) {
+      const { '@token': token } = parseCookies();
+
+      const { data }: { data: TypeWishlist } = await customFetch(
+        `/wishlists?populate=*&filters[user][id][$eq]=${user?.id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
+
+      const onWishlist = data?.data?.some(
+        (list) => list.attributes.product.data.id === product.data.id,
+      );
+
+      setIsOnWishlist(onWishlist);
+
+      const productWishlistId = data?.data.filter(
+        (list) => list.attributes.product.data.id === product.data.id,
+      );
+
+      setWishlistId(productWishlistId[0]?.id);
+    }
+  };
+
+  useEffect(() => {
+    handleWishlist();
+  }, [addToCart, handleDelete]);
 
   return (
     <section>
