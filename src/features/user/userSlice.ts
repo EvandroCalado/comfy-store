@@ -66,12 +66,7 @@ const userSlice = createSlice({
 
     logoutUser: (state) => {
       state.user = null;
-      destroyCookie(null, '@token', {
-        path: '/',
-        httponly: true,
-        secure: true,
-        sameSite: 'strict',
-      });
+      destroyCookie(null, '@token');
       localStorage.removeItem('user');
       toast.success('Logged out successfully');
     },
