@@ -28,23 +28,30 @@ export const productLoader =
   (store: Store, queryClient: QueryClient) =>
   async ({ params }: { params: Params }) => {
     const user = (store.getState() as RootState).userState.user;
+
     const response = await queryClient.ensureQueryData(
       productQuery(params.id!),
     );
     const product: TypeProduct = response.data as TypeProduct;
 
-    const { '@token': token } = parseCookies();
+    if (user) {
+      const { '@token': token } = parseCookies();
 
-    const { data }: { data: TypeWishlist } = await queryClient.ensureQueryData(
-      wishlistButtonQuery(user?.id!, token),
-    );
+      const { data }: { data: TypeWishlist } =
+        await queryClient.ensureQueryData(
+          wishlistButtonQuery(user?.id!, token),
+        );
 
-    const isOnWishlist = data?.data?.some(
-      (list) => list.attributes.product.data.id === product.data.id,
-    );
+      const isOnWishlist = data?.data?.some(
+        (list) => list.attributes.product.data.id === product.data.id,
+      );
 
-    const wishlistId = data?.data.filter(
-      (list) => list.attributes.product.data.id === product.data.id,
-    );
-    return { product, isOnWishlist, wishlistId: wishlistId[0]?.id };
+      const wishlistId = data?.data.filter(
+        (list) => list.attributes.product.data.id === product.data.id,
+      );
+
+      return { product, isOnWishlist, wishlistId: wishlistId[0]?.id };
+    }
+
+    return { product };
   };

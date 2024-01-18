@@ -15,6 +15,7 @@ export const loginAction =
       const response = await customFetch.post('/auth/local', data);
       store.dispatch(loginUser(response.data));
       toast.success('Logget in successfully');
+
       return redirect('/');
     } catch (error) {
       if (error instanceof AxiosError) {

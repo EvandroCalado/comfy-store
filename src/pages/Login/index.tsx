@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { Form, Link, useNavigate } from 'react-router-dom';
+import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Input } from '../../components';
 import { loginUser } from '../../features/user/userSlice';
 import { customFetch } from '../../utils';
@@ -8,6 +8,7 @@ import { customFetch } from '../../utils';
 export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const loginAsGuest = async () => {
     try {
@@ -18,7 +19,7 @@ export const Login = () => {
 
       dispatch(loginUser(response.data));
       toast.success('Logget in successfully');
-      navigate('/');
+      navigate(location.state?.from || '/', { replace: true });
     } catch (error) {
       console.log(error);
       toast.error('Guest user login error. Please try again!');

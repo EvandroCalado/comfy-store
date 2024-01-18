@@ -1,7 +1,12 @@
 import { parseCookies } from 'nookies';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import {
+  Link,
+  useLoaderData,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import { GenerateOptions } from '../../components';
 import { addItem } from '../../features/cart/cartSlice';
 import { RootState } from '../../store';
@@ -24,6 +29,7 @@ export const Product = () => {
   const [productColor, setProductColor] = useState(colors[0]);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setAmount(Number(e.target.value));
@@ -52,6 +58,11 @@ export const Product = () => {
     setLoading(true);
 
     const { '@token': token } = parseCookies();
+
+    if (!token) {
+      setLoading(false);
+      return navigate('/login', { state: { from: location.pathname } });
+    }
 
     await customFetch.post(
       '/wishlists',
