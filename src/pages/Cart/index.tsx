@@ -34,6 +34,7 @@ export const Cart = () => {
           ) : (
             <Link
               to="/login"
+              state={{ from: '/cart' }}
               className="btn btn-primary btn-block mt-8 uppercase"
             >
               login to checkout
