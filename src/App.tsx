@@ -29,7 +29,7 @@ import {
 } from './api/loaders';
 
 // actions
-import { loginAction, orderAction, registerAction } from './api/actions';
+import { orderAction, registerAction } from './api/actions';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -93,7 +93,6 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
     errorElement: <Error />,
-    action: loginAction(store),
   },
   {
     path: '/register',
