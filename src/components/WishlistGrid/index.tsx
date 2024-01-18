@@ -19,14 +19,14 @@ export const WishlistGrid = () => {
     });
 
     setLoading(false);
-    return navigate(0);
+    return navigate('/wishlist', { replace: true });
   };
 
   useEffect(() => {
     if (wishlist.data.length > 0) {
       setImageLoading(false);
     }
-  });
+  }, []);
 
   return (
     <div className="grid gap-4 pt-12 md:grid-cols-2 lg:grid-cols-3">
