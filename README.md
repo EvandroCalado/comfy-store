@@ -47,7 +47,7 @@
 
 Home | Sobre | Entrar | Registro |
 |---|---|---|---|
-<img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/978cdf95-361d-43dc-9142-42e9ec77cebc" width="330" height="430" /> | <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/6535eb10-8fd9-463d-b05d-f0aa844b3f87" width="330" height="430" />| <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/4dbd0fc0-358f-434c-b511-1e404c60c8ef" width="330" height="430" />| <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/595bd568-ffcb-48fb-b267-2393863c3613" width="330" height="430" />
+<img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/978cdf95-361d-43dc-9142-42e9ec77cebc" width="330" height="350" /> | <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/6535eb10-8fd9-463d-b05d-f0aa844b3f87" width="330" height="350" />| <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/4dbd0fc0-358f-434c-b511-1e404c60c8ef" width="330" height="350" />| <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/595bd568-ffcb-48fb-b267-2393863c3613" width="330" height="350" />
   
   
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
@@ -58,7 +58,7 @@ Home | Sobre | Entrar | Registro |
 
 Home | Produtos | Carrinho |
 |---|---|---|
-<img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/2fca71d6-22a7-4af0-b837-f4ddadd58e29" width="900" height="200" /> | <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/e03f3d85-fbf6-444f-b815-11e2a7f75410" width="900" height="200" /> | <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/af318e4c-44d5-427e-acc9-c0c540f1200c" width="900" height="200" />
+<img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/2fca71d6-22a7-4af0-b837-f4ddadd58e29" width="900" height="150" /> | <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/e03f3d85-fbf6-444f-b815-11e2a7f75410" width="900" height="150" /> | <img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/af318e4c-44d5-427e-acc9-c0c540f1200c" width="900" height="150" />
 
 
 <br/>
