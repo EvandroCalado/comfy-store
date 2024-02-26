@@ -71,6 +71,24 @@ Home | Produtos | Carrinho |
   
 <br />   
 
+## `📖 Instalação`
+
+<br />
+
+> Com o git instalado. 
+
+```
+git clone https://github.com/EvandroCalado/comfy-store
+```
+
+<br />
+
+> Com o node instalado. 
+
+```
+npm install
+```
+
 
 ## `📖 Scripts` 
 
@@ -116,7 +134,7 @@ Home | Produtos | Carrinho |
 
 
 ```JSON
-      "devDependencies": {
+  "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
@@ -179,7 +197,7 @@ Home | Produtos | Carrinho |
 
 <div > 
 
-| [<img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/67c2c7ab-bfc1-441f-a960-ec698fb99559" width=250 ><br><sub> Evandro Calado </sub>](https://www.linkedin.com/in/evandro-calado/) | ***Hello 😃 Se você chegou até aqui, acredito que gostou do meu projeto, nesse caso temos algo em comum, sendo assim que tal conversamos um pouco? Me chama no linkedin 😁*** | 
+| [<img src="https://github.com/EvandroCalado/comfy-store/assets/110628201/67c2c7ab-bfc1-441f-a960-ec698fb99559" width=250 ><br><sub> Evandro Calado </sub>](https://www.linkedin.com/in/evandro-calado/) | ***Hello 😃 Se você chegou até aqui, acredito que gostou do meu projeto, nesse caso temos algo em comum, sendo assim que tal conversamos um pouco? Me chama no [linkedin](https://www.linkedin.com/in/evandro-calado/) 😁*** | 
 |---|---|
 
 
